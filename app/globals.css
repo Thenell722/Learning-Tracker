@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Warm paper-toned light theme */
+    --background: 40 30% 97%;
+    --foreground: 20 15% 12%;
+    --card: 40 25% 99%;
+    --card-foreground: 20 15% 12%;
+    --popover: 40 25% 99%;
+    --popover-foreground: 20 15% 12%;
+    --primary: 175 60% 28%;
+    --primary-foreground: 40 30% 97%;
+    --secondary: 40 20% 92%;
+    --secondary-foreground: 20 15% 20%;
+    --muted: 40 15% 90%;
+    --muted-foreground: 20 10% 42%;
+    --accent: 28 70% 52%;
+    --accent-foreground: 40 30% 97%;
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 40 30% 97%;
+    --success: 150 50% 35%;
+    --success-foreground: 40 30% 97%;
+    --warning: 35 80% 48%;
+    --warning-foreground: 40 30% 97%;
+    --border: 40 15% 86%;
+    --input: 40 15% 86%;
+    --ring: 175 60% 28%;
+    --chart-1: 175 60% 28%;
+    --chart-2: 28 70% 52%;
+    --chart-3: 150 50% 35%;
+    --chart-4: 220 50% 45%;
+    --chart-5: 340 55% 48%;
+    --radius: 0.25rem;
+  }
+  .dark {
+    /* Deep warm charcoal dark theme */
+    --background: 200 15% 8%;
+    --foreground: 40 20% 88%;
+    --card: 200 12% 11%;
+    --card-foreground: 40 20% 88%;
+    --popover: 200 12% 11%;
+    --popover-foreground: 40 20% 88%;
+    --primary: 175 50% 45%;
+    --primary-foreground: 200 15% 8%;
+    --secondary: 200 10% 16%;
+    --secondary-foreground: 40 20% 88%;
+    --muted: 200 10% 15%;
+    --muted-foreground: 40 10% 55%;
+    --accent: 28 65% 55%;
+    --accent-foreground: 200 15% 8%;
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 40 20% 95%;
+    --success: 150 40% 45%;
+    --success-foreground: 200 15% 8%;
+    --warning: 35 75% 55%;
+    --warning-foreground: 200 15% 8%;
+    --border: 200 10% 18%;
+    --input: 200 10% 18%;
+    --ring: 175 50% 45%;
+    --chart-1: 175 50% 45%;
+    --chart-2: 28 65% 55%;
+    --chart-3: 150 40% 45%;
+    --chart-4: 220 50% 55%;
+    --chart-5: 340 55% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  /* Headings use serif display font */
+  h1, h2, h3 {
+    font-family: var(--font-display), Georgia, serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Custom scrollbar */
+@layer utilities {
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+
+  .font-display {
+    font-family: var(--font-display), Georgia, serif;
+  }
+  .font-sans {
+    font-family: var(--font-sans), system-ui, sans-serif;
+  }
+
+  /* Editorial section divider */
+  .section-divider {
+    @apply border-t border-border;
+  }
+
+  /* Subtle paper texture for light mode */
+  .paper-texture {
+    background-image: radial-gradient(circle at 1px 1px, hsl(var(--foreground) / 0.02) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+}
+
+/* Progress bar shimmer animation */
+@keyframes progress-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.animate-progress {
+  background-size: 200% 100%;
+  animation: progress-shimmer 2s linear infinite;
+}
+
+/* Slide-in animation */
+@keyframes slide-in {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out forwards;
+}
+
+/* Fade-in animation */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fade-in 0.35s ease-out forwards;
+}
+
+/* Stagger helpers */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+.stagger-6 { animation-delay: 0.3s; }
+
+/* Typewriter caret for timer */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
